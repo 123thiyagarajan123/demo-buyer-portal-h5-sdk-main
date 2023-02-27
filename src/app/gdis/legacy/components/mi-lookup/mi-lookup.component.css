@@ -1,0 +1,30 @@
+.demo-lookup .lookup-wrapper {
+  margin-bottom: 7px;
+}
+.demo-lookup-uppercase {
+  text-transform: uppercase;
+}
+.demo-lookup-additionalInfo {
+  min-height: 15px;
+}
+.demo-lookup-additionalInfo > label {
+  color: #5c5c5c;
+  font-style: italic;
+  margin-bottom: 0;
+  max-width: 300px;
+  text-align: right;
+}
+.demo-lookup-label {
+  height: 18px;
+}
+.demo-lookup-label > label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.demo-lookup,
+.lookup-modal {
+  max-width: calc(100vw - 500px) !important;
+}
+#demo-lookup-modal .pager-toolbar {
+  visibility: collapse;
+}

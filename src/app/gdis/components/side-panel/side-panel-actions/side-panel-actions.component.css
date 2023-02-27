@@ -1,0 +1,23 @@
+.action-content {
+  padding: 20px 0 0 0;
+}
+
+.action-link {
+  display: flex;
+  align-items: center;
+}
+
+.action-link.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.action-link:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.action-link > svg {
+  margin-right: 10px;
+}

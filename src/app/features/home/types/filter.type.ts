@@ -1,0 +1,9 @@
+export interface IFilter {
+  F_WHLO: string;
+  T_WHLO: string;
+  F_ACTP: string;
+  T_ACTP: string;
+  F_RELD: string;
+  T_RELD: string;
+  POBUYE: string;
+}

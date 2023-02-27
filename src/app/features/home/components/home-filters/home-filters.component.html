@@ -1,0 +1,222 @@
+<ng-container *transloco="let t">
+  <h5-form>
+    <div
+      soho-busyindicator
+      class="row padding-top-20 margin-bottom-0 max-width-300"
+    >
+      <div class="twelve columns">
+        <div class="field float-left limit-width">
+          <label for="fromWHLO" class="label">{{
+            t(Config.Scope + ".fromWarehouse")
+          }}</label>
+          <select
+            soho-dropdown
+            name="fromWHLO"
+            [(ngModel)]="fromWarehouse"
+            (change)="updateFilters()"
+          >
+            <option
+              *ngFor="let warehouse of warehouses"
+              [value]="warehouse.WHLO"
+            >
+              {{ warehouse!.WHLO }} /
+              {{ warehouse!.WHNM }}
+            </option>
+          </select>
+        </div>
+
+        <div class="field float-left limit-width">
+          <label for="toWHLO" class="label">{{
+            t(Config.Scope + ".toWarehouse")
+          }}</label>
+          <select
+            soho-dropdown
+            name="toWHLO"
+            [(ngModel)]="toWarehouse"
+            (change)="updateFilters()"
+          >
+            <option
+              *ngFor="let warehouse of warehouses"
+              [value]="warehouse.WHLO"
+            >
+              {{ warehouse!.WHLO }} /
+              {{ warehouse!.WHNM }}
+            </option>
+          </select>
+        </div>
+
+        <div class="field float-left limit-width">
+          <label for="fromAction" class="label">{{
+            t(Config.Scope + ".fromActionMessage")
+          }}</label>
+          <select
+            soho-dropdown
+            name="fromAction"
+            [(ngModel)]="fromActionMessage"
+            (change)="updateFilters()"
+          >
+            <option value=""></option>
+            <option value="A1">
+              {{ t(Config.Scope + ".popActionMessageStatusA1") }}
+            </option>
+            <option value="A2">
+              {{ t(Config.Scope + ".popActionMessageStatusA2") }}
+            </option>
+            <option value="A3">
+              {{ t(Config.Scope + ".popActionMessageStatusA3") }}
+            </option>
+            <option value="A4">
+              {{ t(Config.Scope + ".popActionMessageStatusA4") }}
+            </option>
+            <option value="A5">
+              {{ t(Config.Scope + ".popActionMessageStatusA5") }}
+            </option>
+            <option value="B1">
+              {{ t(Config.Scope + ".popActionMessageStatusB1") }}
+            </option>
+            <option value="B2">
+              {{ t(Config.Scope + ".popActionMessageStatusB2") }}
+            </option>
+            <option value="B3">
+              {{ t(Config.Scope + ".popActionMessageStatusB3") }}
+            </option>
+            <option value="B4">
+              {{ t(Config.Scope + ".popActionMessageStatusB4") }}
+            </option>
+            <option value="B5">
+              {{ t(Config.Scope + ".popActionMessageStatusB5") }}
+            </option>
+            <option value="B6">
+              {{ t(Config.Scope + ".popActionMessageStatusB6") }}
+            </option>
+            <option value="B7">
+              {{ t(Config.Scope + ".popActionMessageStatusB7") }}
+            </option>
+            <option value="B8">
+              {{ t(Config.Scope + ".popActionMessageStatusB8") }}
+            </option>
+            <option value="C1">
+              {{ t(Config.Scope + ".popActionMessageStatusC1") }}
+            </option>
+            <option value="C2">
+              {{ t(Config.Scope + ".popActionMessageStatusC2") }}
+            </option>
+            <option value="C3">
+              {{ t(Config.Scope + ".popActionMessageStatusC3") }}
+            </option>
+          </select>
+        </div>
+
+        <div class="field float-left limit-width">
+          <label for="toAction" class="label">{{
+            t(Config.Scope + ".toActionMessage")
+          }}</label>
+          <select
+            soho-dropdown
+            name="toAction"
+            [(ngModel)]="toActionMessage"
+            (change)="updateFilters()"
+          >
+            <option value=""></option>
+            <option value="A1">
+              {{ t(Config.Scope + ".popActionMessageStatusA1") }}
+            </option>
+            <option value="A2">
+              {{ t(Config.Scope + ".popActionMessageStatusA2") }}
+            </option>
+            <option value="A3">
+              {{ t(Config.Scope + ".popActionMessageStatusA3") }}
+            </option>
+            <option value="A4">
+              {{ t(Config.Scope + ".popActionMessageStatusA4") }}
+            </option>
+            <option value="A5">
+              {{ t(Config.Scope + ".popActionMessageStatusA5") }}
+            </option>
+            <option value="B1">
+              {{ t(Config.Scope + ".popActionMessageStatusB1") }}
+            </option>
+            <option value="B2">
+              {{ t(Config.Scope + ".popActionMessageStatusB2") }}
+            </option>
+            <option value="B3">
+              {{ t(Config.Scope + ".popActionMessageStatusB3") }}
+            </option>
+            <option value="B4">
+              {{ t(Config.Scope + ".popActionMessageStatusB4") }}
+            </option>
+            <option value="B5">
+              {{ t(Config.Scope + ".popActionMessageStatusB5") }}
+            </option>
+            <option value="B6">
+              {{ t(Config.Scope + ".popActionMessageStatusB6") }}
+            </option>
+            <option value="B7">
+              {{ t(Config.Scope + ".popActionMessageStatusB7") }}
+            </option>
+            <option value="B8">
+              {{ t(Config.Scope + ".popActionMessageStatusB8") }}
+            </option>
+            <option value="C1">
+              {{ t(Config.Scope + ".popActionMessageStatusC1") }}
+            </option>
+            <option value="C2">
+              {{ t(Config.Scope + ".popActionMessageStatusC2") }}
+            </option>
+            <option value="C3">
+              {{ t(Config.Scope + ".popActionMessageStatusC3") }}
+            </option>
+          </select>
+        </div>
+
+        <div class="field float-left">
+          <label for="standard1" class="label">{{
+            t(Config.Scope + ".fromDate")
+          }}</label>
+          <input
+            soho-datepicker
+            id="standard1"
+            [dateFormat]="dateFormat"
+            mode="standard"
+            [placeholder]="dateFormat"
+            [(ngModel)]="fromDate"
+            (change)="updateFilters()"
+          />
+        </div>
+
+        <div class="field float-left">
+          <label for="standard2" class="label">{{
+            t(Config.Scope + ".toDate")
+          }}</label>
+          <input
+            soho-datepicker
+            id="standard2"
+            name="standard"
+            [dateFormat]="dateFormat"
+            mode="standard"
+            [placeholder]="dateFormat"
+            [(ngModel)]="toDate"
+            (change)="updateFilters()"
+          />
+        </div>
+
+        <div class="field float-left limit-width">
+          <label for="buyers" class="label">{{
+            t(Config.Scope + ".buyer")
+          }}</label>
+          <select
+            soho-dropdown
+            name="buyers"
+            [(ngModel)]="buyer"
+            (change)="updateFilters()"
+          >
+            <option *ngFor="let buyer of buyers" [value]="buyer.USID">
+              {{ buyer!.USID }} /
+              {{ buyer!.TX40 }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </h5-form>
+</ng-container>

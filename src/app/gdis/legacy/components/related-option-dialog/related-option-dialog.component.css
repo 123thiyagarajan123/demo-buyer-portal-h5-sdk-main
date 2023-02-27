@@ -1,0 +1,9 @@
+.demo-dialog {
+  height: 400px;
+  width: 800px;
+  max-height: 480px;
+  min-height: 325px;
+}
+.modal.contextual-action-panel .modal-body {
+  padding: 0;
+}

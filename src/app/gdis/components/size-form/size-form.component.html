@@ -1,0 +1,46 @@
+<ng-container *transloco="let t">
+  <h3>{{ t("settings.sizeTitle") }}</h3>
+  <h5-form [formGroup]="rootForm">
+    <div class="row">
+      <div class="column">
+        <div class="compound-field">
+          <div class="field">
+            <label soho-label [attr.for]="FORM_SIZE_DROPDOWN">{{
+              t("settings.formSizeLabel")
+            }}</label>
+
+            <select
+              soho-dropdown
+              [noSearch]="true"
+              [id]="FORM_SIZE_DROPDOWN"
+              [name]="FORM_SIZE_DROPDOWN"
+              [formControlName]="FORM_SIZE_DROPDOWN"
+            >
+              <option *ngFor="let size of this.formSizes" [value]="size">
+                {{ size }}
+              </option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label soho-label [attr.for]="ROW_SIZE_DROPDOWN">{{
+              t("settings.rowSizeLabel")
+            }}</label>
+
+            <select
+              soho-dropdown
+              [noSearch]="true"
+              [id]="ROW_SIZE_DROPDOWN"
+              [name]="ROW_SIZE_DROPDOWN"
+              [formControlName]="ROW_SIZE_DROPDOWN"
+            >
+              <option *ngFor="let size of this.rowSizes" [value]="size">
+                {{ size }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </h5-form>
+</ng-container>

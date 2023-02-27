@@ -1,0 +1,118 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "plugins": ["eslint-plugin-import"],
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/recommended--extra",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "prettier"
+      ],
+      "rules": {
+        // "@angular-eslint/directive-selector": [
+        //   "error",
+        //   {
+        //     "type": "attribute",
+        //     "prefix": "app",
+        //     "style": "camelCase"
+        //   }
+        // ],
+        // "@angular-eslint/component-selector": [
+        //   "error",
+        //   {
+        //     "type": "element",
+        //     "prefix": "app",
+        //     "style": "kebab-case"
+        //   }
+        // ],
+        "import/order": [
+          "error",
+          {
+            "groups": [
+              "builtin",
+              "external",
+              "parent",
+              "sibling",
+              "index",
+              "internal",
+              "object",
+              "type"
+            ],
+
+            "newlines-between": "always",
+            "pathGroups": [
+              {
+                "pattern": "@angular/**",
+                "group": "builtin",
+                "position": "after"
+              },
+              {
+                "pattern": "@infor-up/**",
+                "group": "external",
+                "position": "after"
+              },
+              {
+                "pattern": "rxjs?*",
+                "group": "external",
+                "position": "after"
+              },
+              {
+                "pattern": "ids-enterprise-ng",
+                "group": "external",
+                "position": "after"
+              },
+              {
+                "pattern": "@core/**",
+                "group": "external",
+                "position": "after"
+              },
+              {
+                "pattern": "@shared/**",
+                "group": "external",
+                "position": "after"
+              },
+              {
+                "pattern": "@features/**",
+                "group": "external",
+                "position": "after"
+              },
+              {
+                "pattern": "@shell/**",
+                "group": "external",
+                "position": "after"
+              },
+              {
+                "pattern": "@assets/**",
+                "group": "external",
+                "position": "after"
+              },
+              {
+                "pattern": "@gdis/**",
+                "group": "external",
+                "position": "after"
+              },
+              {
+                "pattern": "@environments/**",
+                "group": "external",
+                "position": "after"
+              }
+            ],
+            "pathGroupsExcludedImportTypes": []
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended", "prettier"],
+      "rules": {}
+    }
+  ]
+}

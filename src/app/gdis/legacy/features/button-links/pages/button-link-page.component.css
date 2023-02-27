@@ -1,0 +1,9 @@
+:host button {
+  margin-right: 10px !important;
+}
+
+:host .flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,8 @@
+:host .action-button-group {
+  display: flex;
+  padding: 20px;
+}
+
+:host .severity-button {
+  margin-top: 20px;
+}

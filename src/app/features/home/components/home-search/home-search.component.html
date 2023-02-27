@@ -1,0 +1,49 @@
+<ng-container *transloco="let t">
+  <div
+    soho-busyindicator
+    [activated]="isBusy"
+    [blockUI]="true"
+    [displayDelay]="0"
+  >
+    <app-home-filters
+      (filtersChanged)="filtersChanged($event)"
+      (warehousesFound)="warehousesFound($event)"
+    ></app-home-filters>
+    <!-- Header Area -->
+    <div class="header-area">
+      <div class="title float-left">
+        {{ t(Config.Scope + ".myPlannedOrders") }}
+
+        <span class="datagrid-result-count" *ngIf="dataset">
+          ({{ dataset.length }} results)
+        </span>
+      </div>
+    </div>
+
+    <!-- Listview Area / Search field -->
+    <soho-listview
+      [dataset]="dataset"
+      [searchable]="true"
+      #singleSelectListView
+      [selectable]="'single'"
+      (selected)="onSelected($event)"
+      (deselected)="onSelected($event)"
+    >
+      <input
+        soho-searchfield
+        #sohoSearchField
+        placeholder="{{ t('datagridSearch') }}"
+        [clearable]="true"
+        [tabbable]="false"
+      />
+      <li soho-listview-item *ngFor="let record of dataset">
+        <div>
+          <p soho-listview-header>{{ record["IDSUNM"] }}</p>
+        </div>
+        <div>
+          <p soho-listview-subheader>{{ record["POSUNO"] }}</p>
+        </div>
+      </li>
+    </soho-listview>
+  </div>
+</ng-container>

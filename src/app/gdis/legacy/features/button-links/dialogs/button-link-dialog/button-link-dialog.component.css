@@ -1,0 +1,9 @@
+:host .action-button-group {
+  display: flex;
+  padding: 20px;
+}
+
+:host {
+  height: auto;
+  width: 350px;
+}

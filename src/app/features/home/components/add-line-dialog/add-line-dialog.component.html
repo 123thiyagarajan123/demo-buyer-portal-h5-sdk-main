@@ -1,0 +1,64 @@
+<ng-container *transloco="let t">
+  <div class="row no-indent">
+    <h5-form class="float-left">
+      <fieldset>
+        <div class="summary-form">
+          <div class="float-left">
+            <span class="label">{{ t(Config.Scope + ".supplier") }}</span>
+            <span class="data" *ngIf="supplierName"
+              >{{ supplier }} / {{ supplierName }}</span
+            >
+            <span class="data" *ngIf="!supplierName">{{ supplier }}</span>
+          </div>
+        </div>
+      </fieldset>
+    </h5-form>
+    <h5-form class="float-left">
+      <div class="field float-left">
+        <label for="warehouses" class="label">{{
+          t(Config.Scope + ".warehouse")
+        }}</label>
+        <select soho-dropdown name="warehouses" [(ngModel)]="warehouse">
+          <option *ngFor="let warehouse of warehouses" [value]="warehouse.WHLO">
+            {{ warehouse!.WHLO }} /
+            {{ warehouse!.WHNM }}
+          </option>
+        </select>
+      </div>
+    </h5-form>
+
+    <h5-form class="float-left">
+      <div class="field float-left">
+        <label for="date" class="label">{{ t(Config.Scope + ".date") }}</label>
+        <input
+          soho-datepicker
+          id="date"
+          [dateFormat]="dateFormat"
+          mode="standard"
+          [placeholder]="dateFormat"
+          [(ngModel)]="date"
+        />
+      </div>
+    </h5-form>
+  </div>
+
+  <div class="row no-indent divider-top margin-zero-bottom">
+    <app-add-line-list
+      header="{{ t(Config.Scope + '.items') }}"
+      [selectedParentRecord]="warehouse"
+      apiProgram="CMS100MI"
+      apiTransaction="LstZBP_MITBAL"
+      apiSearchProgram="CMS100MI"
+      apiSearchTransaction="LstZBP_MITBAL"
+      [isAdvancedFiltering]="true"
+      [isDateRange]="false"
+      [isDrillable]="false"
+      [isMaxRecordCounter]="false"
+      [isQuickView]="true"
+      [isSearchable]="true"
+      [warehouse]="warehouse"
+      [planningDate]="date"
+      (dirtyRowsChanged)="dirtyRowsChanged($event)"
+    ></app-add-line-list>
+  </div>
+</ng-container>

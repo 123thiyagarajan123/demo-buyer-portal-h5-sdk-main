@@ -1,0 +1,7 @@
+/*
+  Fixes soho accordion bug when you want [isExpanded]="true"
+*/
+:host .accordion-content {
+  padding: 0;
+  padding-bottom: 10px;
+}

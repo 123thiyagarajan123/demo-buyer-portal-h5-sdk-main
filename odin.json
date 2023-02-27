@@ -1,0 +1,32 @@
+{
+  "projectName": "demo-buyer-portal-h5-sdk",
+  "proxy": {
+    "/m3api-rest": {
+      "target": "https://m3prduse1.m3.inforcloudsuite.com",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    },
+    "/mne": {
+      "target": "https://m3prduse1.m3.inforcloudsuite.com",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    },
+    "/ca": {
+      "target": "https://m3prduse1.m3.inforcloudsuite.com",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    },
+    "/ODIN_DEV_TENANT": {
+      "target": "https://mingle-ionapi.inforcloudsuite.com/SLSGDENA011_TST",
+      "secure": false,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/ODIN_DEV_TENANT": ""
+      },
+      "logLevel": "debug"
+    }
+  }
+}

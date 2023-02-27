@@ -1,0 +1,13 @@
+:host > div {
+  min-height: 0;
+  min-width: 250px;
+  margin-right: 20px;
+}
+
+:host .form-section-header .action-buttons {
+  margin-left: auto;
+}
+
+:host .negative-number {
+  background: #e66467 !important;
+}

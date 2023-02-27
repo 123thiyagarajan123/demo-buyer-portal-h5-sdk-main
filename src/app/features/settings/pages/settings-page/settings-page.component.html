@@ -1,0 +1,16 @@
+<h5-main
+  [pageContainer]="true"
+  [fixed]="true"
+  [scrollable]="true"
+  [twoColumn]="true"
+>
+  <h5-frame [sidebar]="true">
+    <app-tab-header></app-tab-header>
+  </h5-frame>
+
+  <h5-frame [main]="true" [scrollableY]="true">
+    <div class="margin-30">
+      <router-outlet></router-outlet>
+    </div>
+  </h5-frame>
+</h5-main>

@@ -1,0 +1,95 @@
+<ng-container *transloco="let t">
+  <div
+    soho-busyindicator
+    [activated]="isBusy"
+    [blockUI]="true"
+    [displayDelay]="0"
+  >
+    <form class="form-responsive">
+      <div class="row">
+        <div class="twelve columns">
+          <!-- Name -->
+          <div>
+            <label for="name">{{ t("monitorName") }}</label>
+          </div>
+          <input
+            id="name"
+            name="name"
+            [(ngModel)]="monitor.name"
+            [readonly]="action == 2"
+          />
+        </div>
+      </div>
+
+      <div class="row" *ngIf="action != 2">
+        <div class="twelve columns">
+          <div>
+            <label for="program">{{ t("monitorProgram") }}</label>
+          </div>
+          <input id="program" name="program" [(ngModel)]="monitor.program" />
+        </div>
+      </div>
+
+      <div class="row" *ngIf="action != 2">
+        <div class="twelve columns">
+          <div>
+            <label for="sortingOrder">{{ t("monitorSortingOrder") }}</label>
+          </div>
+          <input
+            id="sortingOrder"
+            name="sortingOrder"
+            [(ngModel)]="monitor.sortingOrder"
+          />
+        </div>
+      </div>
+
+      <div class="row" *ngIf="action != 2">
+        <div class="twelve columns">
+          <div>
+            <label for="view">{{ t("monitorView") }}</label>
+          </div>
+          <input id="view" name="view" [(ngModel)]="monitor.view" />
+        </div>
+      </div>
+
+      <div class="row" *ngIf="action != 2">
+        <div class="twelve columns">
+          <div>
+            <label for="query">{{ t("monitorQuery") }}</label>
+          </div>
+          <input id="query" name="query" [(ngModel)]="monitor.query" />
+        </div>
+      </div>
+
+      <div class="row severity-button" *ngIf="action != 2">
+        <div class="twelve columns">
+          <button class="btn btn-tertiary" (click)="onSeverityIndicator()">
+            {{ t("monitorSeverityIndicator") }}
+          </button>
+        </div>
+      </div>
+
+      <div class="action-button-group">
+        <button class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+        <button
+          *ngIf="action == 0"
+          class="btn btn-primary"
+          [disabled]="monitor.name.length == 0"
+          (click)="onAdd()"
+        >
+          {{ t("monitorAdd") }}
+        </button>
+        <button *ngIf="action == 1" class="btn btn-primary" (click)="onEdit()">
+          {{ t("monitorSave") }}
+        </button>
+        <button
+          *ngIf="action == 2"
+          class="btn btn-primary"
+          (click)="onDelete()"
+        >
+          {{ t("monitorDelete") }}
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-container>

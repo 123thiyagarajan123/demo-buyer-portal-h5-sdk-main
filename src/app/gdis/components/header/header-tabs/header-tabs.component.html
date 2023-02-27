@@ -1,0 +1,9 @@
+<div #tabset soho-tabs>
+  <div soho-tab-list-container>
+    <ul soho-tab-list>
+      <li soho-tab *ngFor="let tab of header.tabs" (click)="tab.onClick()">
+        <a class="disabled" soho-tab-title [tabId]="tab.id">{{ tab.title }}</a>
+      </li>
+    </ul>
+  </div>
+</div>

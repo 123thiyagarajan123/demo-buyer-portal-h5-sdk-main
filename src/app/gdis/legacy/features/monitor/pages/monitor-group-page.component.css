@@ -1,0 +1,9 @@
+:host .add-monitor-group {
+  margin-right: 20px !important;
+}
+
+:host .flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

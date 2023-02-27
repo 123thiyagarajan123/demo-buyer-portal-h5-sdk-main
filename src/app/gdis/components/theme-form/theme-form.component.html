@@ -1,0 +1,52 @@
+<ng-container *transloco="let t">
+  <h3>{{ t("settings.themeTitle") }}</h3>
+  <h5-form [formGroup]="rootForm">
+    <div class="row">
+      <div class="column">
+        <div class="compound-field">
+          <div class="field">
+            <label soho-label [attr.for]="COLOR_DROPDOWN">{{
+              t("settings.themeColorLabel")
+            }}</label>
+
+            <select
+              soho-dropdown
+              [noSearch]="true"
+              [id]="COLOR_DROPDOWN"
+              [name]="COLOR_DROPDOWN"
+              [formControlName]="COLOR_DROPDOWN"
+            >
+              <option
+                *ngFor="let color of this.colors"
+                [value]="color.id"
+                attr.data-icon="{{ dataIcon(color) }}"
+                attr.data-hex="{{ color.value }}"
+              >
+                {{ color.name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label soho-label [attr.for]="MODE_DROPDOWN">{{
+              t("settings.themeModeLabel")
+            }}</label>
+
+            <select
+              soho-dropdown
+              [noSearch]="true"
+              [id]="MODE_DROPDOWN"
+              [name]="MODE_DROPDOWN"
+              [formControlName]="MODE_DROPDOWN"
+              placeholder="Select a theme mode"
+            >
+              <option *ngFor="let mode of this.modes" [value]="mode.id">
+                {{ mode.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </h5-form>
+</ng-container>

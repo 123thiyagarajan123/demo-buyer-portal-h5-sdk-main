@@ -1,0 +1,15 @@
+<div
+  *ngFor="let customAction of relatedInformation?.customActions"
+  class="custom-action-content"
+>
+  <div
+    class="custom-action-link"
+    [class.disabled]="relatedInformation.record === null ? true : null"
+    (click)="executeCustomAction(customAction, relatedInformation)"
+  >
+    <svg soho-icon icon="tree-link"></svg>
+    <a>
+      <span>{{ customAction.name }}</span>
+    </a>
+  </div>
+</div>

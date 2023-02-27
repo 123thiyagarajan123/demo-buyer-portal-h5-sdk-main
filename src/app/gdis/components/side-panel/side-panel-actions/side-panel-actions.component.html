@@ -1,0 +1,14 @@
+<div *ngFor="let action of relatedInformation?.actions" class="action-content">
+  <div
+    class="action-link"
+    [class.disabled]="relatedInformation.record === null ? true : null"
+    (click)="executeAction(action, relatedInformation)"
+  >
+    <svg soho-icon icon="tree-link"></svg>
+    <a>
+      <span>{{ action.name }}</span>
+    </a>
+  </div>
+</div>
+
+<div #modalParentRef></div>

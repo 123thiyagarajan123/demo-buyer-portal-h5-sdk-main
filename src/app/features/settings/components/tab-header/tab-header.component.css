@@ -1,0 +1,16 @@
+a.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.tab-container.vertical > .tab-list-container {
+  height: calc(100vh - 60px);
+  border-right: unset;
+}
+
+@media (max-width: 766px) {
+  .tab-container.vertical > .tab-list-container {
+    height: unset;
+    width: 100%;
+  }
+}

@@ -1,0 +1,82 @@
+:host ::ng-deep .toolbar {
+  display: flex;
+}
+
+.no-max-width {
+  max-width: 100% !important;
+}
+
+.datagrid-container {
+  /*height: 36vh;*/
+  height: calc(100vh - 60px - 70px - 375px);
+}
+
+:host .datagrid-wrapper {
+  min-height: 20vh;
+}
+
+:host .align-center {
+  align-self: center;
+  margin-bottom: 0;
+}
+
+:host .filter ::ng-deep .dropdown-wrapper {
+  width: 150px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form size - Large and Medium */
+
+h5-form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+h5-form > .group1 {
+  display: flex;
+}
+
+h5-form > .group1 > .field {
+  margin-right: 20px;
+}
+
+h5-form > .group1 > .apply-button {
+  margin-top: 28px;
+}
+
+h5-form > .group1 > .apply-button > button {
+  height: 38px;
+}
+
+/* Form size - Small */
+
+.form-layout-compact > .group1 > .apply-button {
+  margin-top: 25px;
+}
+
+.form-layout-compact
+  *
+  .searchfield-wrapper.non-collapsible
+  > .icon:not(.close):not(.icon-error) {
+  top: 8px;
+}
+
+.form-layout-compact * .searchfield-wrapper .searchfield {
+  padding-left: 34px;
+  padding-right: 10px;
+}
+
+.refresh-button {
+  float: right;
+  z-index: 999;
+  margin-bottom: 0;
+}
+
+.refresh-button > button {
+  padding-right: 0;
+}

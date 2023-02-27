@@ -1,0 +1,11 @@
+<h1>
+  <span soho-toolbar-flex-page-title
+    >{{ header.title | prettifyTitle }}
+    <span *ngIf="environment.development"
+      >[{{ environment.environmentName }}]</span
+    >
+  </span>
+  <span soho-toolbar-flex-section-title *ngIf="header.subTitle">{{
+    header.subTitle
+  }}</span>
+</h1>

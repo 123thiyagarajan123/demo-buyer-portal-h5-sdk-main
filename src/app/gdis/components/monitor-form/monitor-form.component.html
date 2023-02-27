@@ -1,0 +1,31 @@
+<ng-container *transloco="let t">
+  <h3>{{ t("settings.monitorTitle") }}</h3>
+  <h5-form [formGroup]="rootForm">
+    <div class="row">
+      <div class="column">
+        <div class="compound-field">
+          <div class="field">
+            <label soho-label [attr.for]="LEVEL_DROPDOWN">{{
+              t("settings.monitorLabel")
+            }}</label>
+
+            <select
+              soho-dropdown
+              [noSearch]="true"
+              [id]="LEVEL_DROPDOWN"
+              [name]="LEVEL_DROPDOWN"
+              [formControlName]="LEVEL_DROPDOWN"
+            >
+              <option
+                *ngFor="let monitorLevel of this.monitorLevels"
+                [value]="monitorLevel"
+              >
+                {{ MonitorLevel[monitorLevel] }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </h5-form>
+</ng-container>

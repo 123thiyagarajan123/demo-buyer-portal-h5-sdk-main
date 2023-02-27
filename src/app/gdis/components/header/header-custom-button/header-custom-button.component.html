@@ -1,0 +1,8 @@
+<button
+  soho-button="icon"
+  icon="{{ header.customButton?.icon }}"
+  [disabled]="header.customButton?.disabled"
+  (click)="navigateTo()"
+>
+  {{ header.customButton?.text }}
+</button>

@@ -1,0 +1,14 @@
+.float-left {
+  float: left;
+  margin-right: 20px;
+}
+
+.divider-top {
+  border-top: 1px solid #b7b7ba;
+  padding-top: 20px;
+  margin-top: 10px;
+}
+
+.margin-zero-bottom {
+  margin-bottom: 0px;
+}

@@ -1,0 +1,24 @@
+{
+  "scripts": {
+    "postbump": "npm run build && npm run build:package",
+    "precommit": "git add ."
+  },
+  "bumpFiles": [
+    {
+      "filename": "package.json",
+      "type": "json"
+    },
+    {
+      "filename": "package-lock.json",
+      "type": "json"
+    },
+    {
+      "filename": "docs/package/manifest.json",
+      "type": "json"
+    },
+    {
+      "filename": "src/environments/environment.common.ts",
+      "updater": "scripts/bump.js"
+    }
+  ]
+}

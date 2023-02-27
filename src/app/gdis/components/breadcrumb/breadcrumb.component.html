@@ -1,0 +1,23 @@
+<button
+  *ngIf="isBackButton()"
+  (click)="navigateTo()"
+  soho-button="icon"
+  icon="left-arrow"
+>
+  Go back
+</button>
+
+<nav
+  soho-breadcrumb
+  [alternate]="alternate"
+  *ngIf="(store$ | async)?.url as urls"
+>
+  <ol soho-breadcrumb-list>
+    <li
+      *ngFor="let url of getUrls(urls.current); index as i"
+      soho-breadcrumb-item
+    >
+      <a [class.current]="getUrls(urls.current).length === i + 1">{{ url }}</a>
+    </li>
+  </ol>
+</nav>

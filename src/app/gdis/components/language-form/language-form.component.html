@@ -1,0 +1,28 @@
+<ng-container *transloco="let t">
+  <h3>{{ t("settings.languageTitle") }}</h3>
+  <h5-form [formGroup]="rootForm">
+    <div class="row">
+      <div class="column">
+        <div class="compound-field">
+          <div class="field">
+            <label soho-label [attr.for]="LANGUAGE_DROPDOWN">{{
+              t("settings.languageLabel")
+            }}</label>
+
+            <select
+              soho-dropdown
+              [noSearch]="true"
+              [id]="LANGUAGE_DROPDOWN"
+              [name]="LANGUAGE_DROPDOWN"
+              [formControlName]="LANGUAGE_DROPDOWN"
+            >
+              <option *ngFor="let lang of this.languages" [value]="lang">
+                {{ lang }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </h5-form>
+</ng-container>

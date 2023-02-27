@@ -1,0 +1,31 @@
+<ng-container *transloco="let t">
+  <h3>{{ t("settings.buttonLinkTitle") }}</h3>
+  <h5-form [formGroup]="rootForm">
+    <div class="row">
+      <div class="column">
+        <div class="compound-field">
+          <div class="field">
+            <label soho-label [attr.for]="LEVEL_DROPDOWN">{{
+              t("settings.buttonLinkLabel")
+            }}</label>
+
+            <select
+              soho-dropdown
+              [noSearch]="true"
+              [id]="LEVEL_DROPDOWN"
+              [name]="LEVEL_DROPDOWN"
+              [formControlName]="LEVEL_DROPDOWN"
+            >
+              <option
+                *ngFor="let buttonLinkLevel of this.buttonLinkLevels"
+                [value]="buttonLinkLevel"
+              >
+                {{ ButtonLinkLevel[buttonLinkLevel] }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </h5-form>
+</ng-container>

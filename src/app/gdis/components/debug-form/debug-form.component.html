@@ -1,0 +1,31 @@
+<ng-container *transloco="let t">
+  <h3>{{ t("settings.debugTitle") }}</h3>
+  <h5-form [formGroup]="rootForm">
+    <div class="row">
+      <div class="column">
+        <div class="compound-field">
+          <div class="field">
+            <label soho-label [attr.for]="LEVEL_DROPDOWN">{{
+              t("settings.debugLevelLabel")
+            }}</label>
+
+            <select
+              soho-dropdown
+              [noSearch]="true"
+              [id]="LEVEL_DROPDOWN"
+              [name]="LEVEL_DROPDOWN"
+              [formControlName]="LEVEL_DROPDOWN"
+            >
+              <option
+                *ngFor="let logLevel of this.logLevels"
+                [value]="logLevel"
+              >
+                {{ LogLevel[logLevel] }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </h5-form>
+</ng-container>

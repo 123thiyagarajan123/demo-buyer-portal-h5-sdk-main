@@ -1,0 +1,22 @@
+.margin-30 {
+  margin: 30px;
+}
+
+.main {
+  border-left: 1px solid #b7b7ba;
+}
+
+.sidebar {
+  border-right: unset;
+}
+
+@media (max-width: 766px) {
+  .main {
+    border-left: unset;
+  }
+
+  .two-column.fixed > .sidebar {
+    height: auto;
+    min-height: unset;
+  }
+}

@@ -1,0 +1,46 @@
+:host {
+  display: block;
+  width: 300px;
+  margin-right: 20px;
+}
+
+:host button {
+  margin-right: 15px !important;
+}
+
+:host .recordCount {
+  float: right;
+  position: relative;
+  top: -20px;
+}
+
+:host .recordCount span {
+  min-width: 23px !important;
+}
+
+:host soho-card-header div {
+  display: flex;
+  justify-content: right;
+}
+
+:host .li-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+:host li.blue {
+  border-left: 4px solid #2578a9 !important;
+}
+
+:host li.green {
+  border-left: 4px solid #80ce4d !important;
+}
+
+:host li.yellow {
+  border-left: 4px solid #ffd726 !important;
+}
+
+:host li.red {
+  border-left: 4px solid #e84f4f !important;
+}

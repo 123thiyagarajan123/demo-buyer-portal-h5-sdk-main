@@ -1,0 +1,33 @@
+<soho-header
+  *ngIf="(store$ | async)?.header as header"
+  [hasTabs]="header.hasTabs"
+  [hasToolbar]="header.hasToolbar"
+>
+  <ng-template ngIf="{{ header.showToolbar }}">
+    <soho-toolbar-flex>
+      <soho-toolbar-flex-section *ngIf="header.customButton">
+        <h5-header-custom-button [header]="header"></h5-header-custom-button>
+      </soho-toolbar-flex-section>
+
+      <soho-toolbar-flex-section
+        *ngIf="header.hasTitle"
+        [isTitleFavor]="header.isTitleFavor"
+        [isTitle]="true"
+      >
+        <h5-header-title [header]="header"></h5-header-title>
+      </soho-toolbar-flex-section>
+
+      <soho-toolbar-flex-section
+        [isButtonSet]="true"
+        *ngIf="header.showButtons"
+      >
+        <h5-header-buttons [header]="header"></h5-header-buttons>
+      </soho-toolbar-flex-section>
+    </soho-toolbar-flex>
+  </ng-template>
+
+  <h5-header-tabs
+    *ngIf="header.showTabs && header.showTabs"
+    [header]="header"
+  ></h5-header-tabs>
+</soho-header>

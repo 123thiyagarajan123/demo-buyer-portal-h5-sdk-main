@@ -1,0 +1,17 @@
+demo-card-list {
+  width: 300px;
+}
+demo-card-list .header-area {
+  border-bottom: 1px solid #bdbdbd;
+  border-top: 1px solid #bdbdbd;
+  font-size: 16px;
+  height: 50px;
+  padding: 15px 15px 20px;
+}
+demo-card-list .listview {
+  height: calc(100vh - 147px) !important;
+}
+demo-card-list > div {
+  background-color: #fff;
+  border-right: 1px solid #bdbdbd;
+}

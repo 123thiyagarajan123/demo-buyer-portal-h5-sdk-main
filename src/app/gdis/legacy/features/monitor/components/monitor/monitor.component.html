@@ -1,0 +1,11 @@
+<div
+  class="recordCount busy-sm"
+  soho-busyindicator
+  [activated]="isBusy"
+  [blockUI]="true"
+  [displayDelay]="0"
+>
+  <span class="badge" [ngClass]="getBadgeColor()">{{
+    monitor.recordCount
+  }}</span>
+</div>

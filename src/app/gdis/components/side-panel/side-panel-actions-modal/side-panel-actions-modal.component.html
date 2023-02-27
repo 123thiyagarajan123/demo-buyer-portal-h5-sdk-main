@@ -1,0 +1,31 @@
+<div
+  class="demo-dialog"
+  soho-busyindicator
+  [activated]="isBusy"
+  [blockUI]="true"
+  [displayDelay]="0"
+>
+  <div class="row">
+    <div class="twelve columns">
+      <m3-bookmark-panel
+        #detailPanel
+        [isSort]="false"
+        [isEditable]="true"
+        [isUsedInDialog]="true"
+        [bookmark]="bookmark"
+        ngDefaultControl
+        (bookmarkLoaded)="showBusyindicator(false)"
+      >
+      </m3-bookmark-panel>
+    </div>
+  </div>
+
+  <div class="row buttons" *ngIf="!isBusy">
+    <div class="twelve columns">
+      <!-- Cancel button -->
+      <button class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+      <!-- Save button -->
+      <button class="btn btn-primary" (click)="onSave()">Save</button>
+    </div>
+  </div>
+</div>

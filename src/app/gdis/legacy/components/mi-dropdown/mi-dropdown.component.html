@@ -1,0 +1,25 @@
+<div class="demo-dropdown">
+  <!-- Label -->
+  <div class="demo-field-label">
+    <label>{{ heading }}</label>
+  </div>
+
+  <!-- Dropdown -->
+  <select
+    name="demo-dropdown"
+    soho-dropdown
+    [(ngModel)]="record"
+    [disabled]="disabled"
+    (change)="onChange()"
+  >
+    <option></option>
+    <ng-container *ngFor="let record of records">
+      <option *ngIf="!showAdditionalFieldOnly" [ngValue]="record">
+        {{ record[field] }} - {{ record[additionalInfoField] }}
+      </option>
+      <option *ngIf="showAdditionalFieldOnly" [ngValue]="record">
+        {{ record[additionalInfoField] }}
+      </option>
+    </ng-container>
+  </select>
+</div>

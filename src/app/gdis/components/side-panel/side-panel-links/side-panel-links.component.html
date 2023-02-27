@@ -1,0 +1,48 @@
+<div *ngFor="let relatedInformation of relatedInformations">
+  <soho-accordion [allowOnePane]="true">
+    <soho-accordion-header [isExpanded]="true">
+      {{ relatedInformation?.name }}
+    </soho-accordion-header>
+
+    <soho-accordion-pane>
+      <div class="accordion-content">
+        <h5-side-panel-drillbacks
+          [relatedInformation]="relatedInformation"
+        ></h5-side-panel-drillbacks>
+
+        <h5-side-panel-custom-actions
+          [relatedInformation]="relatedInformation"
+        ></h5-side-panel-custom-actions>
+
+        <h5-side-panel-actions
+          [relatedInformation]="relatedInformation"
+        ></h5-side-panel-actions>
+      </div>
+    </soho-accordion-pane>
+  </soho-accordion>
+</div>
+
+<!-- <h5-side-panel-section *ngIf="shortcut.relatedInformations.length">
+  <h5-side-panel-section-header
+    header="DrillBacks"
+  ></h5-side-panel-section-header>
+  <h5-side-panel-drillbacks
+    [relatedInformations]="shortcut.relatedInformations"
+  ></h5-side-panel-drillbacks>
+</h5-side-panel-section>
+
+<h5-side-panel-section *ngIf="shortcut.relatedInformations.length">
+  <h5-side-panel-section-header header="Actions"></h5-side-panel-section-header>
+  <h5-side-panel-actions
+    [relatedInformations]="shortcut.relatedInformations"
+  ></h5-side-panel-actions>
+</h5-side-panel-section>
+
+<h5-side-panel-section *ngIf="shortcut.relatedInformations.length">
+  <h5-side-panel-section-header
+    header="Custom Actions"
+  ></h5-side-panel-section-header>
+  <h5-side-panel-custom-actions
+    [relatedInformations]="shortcut.relatedInformations"
+  ></h5-side-panel-custom-actions>
+</h5-side-panel-section> -->

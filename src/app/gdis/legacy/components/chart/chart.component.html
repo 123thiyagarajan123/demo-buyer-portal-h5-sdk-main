@@ -1,0 +1,106 @@
+<div
+  soho-busyindicator
+  [activated]="isBusy"
+  [blockUI]="true"
+  [displayDelay]="0"
+>
+  <div class="chart-div">
+    <!-- Pie -->
+    <div
+      *ngIf="chartType === 'pie'"
+      soho-pie
+      [dataset]="chartData"
+      [showLegend]="showLegend"
+      (selected)="onSelected($event)"
+    ></div>
+
+    <!-- Bar -->
+    <div
+      *ngIf="chartType === 'bar'"
+      soho-bar
+      [dataset]="chartData"
+      type="bar"
+      (selected)="onSelected($event)"
+    ></div>
+
+    <!-- Bar grouped -->
+    <div
+      *ngIf="chartType === 'bar-grouped'"
+      soho-bar
+      [dataset]="chartData"
+      type="bar-grouped"
+      (selected)="onSelected($event)"
+      [showLegend]="showLegend"
+    ></div>
+
+    <!-- Bar stacked -->
+    <div
+      *ngIf="chartType === 'bar-stacked'"
+      soho-bar
+      [dataset]="chartData"
+      type="bar-stacked"
+      (selected)="onSelected($event)"
+      [showLegend]="showLegend"
+    ></div>
+
+    <!-- Column -->
+    <div
+      *ngIf="chartType === 'column'"
+      soho-column
+      [dataset]="chartData"
+      type="column"
+      (selected)="onSelected($event)"
+      [showLegend]="showLegend"
+    ></div>
+
+    <!-- Column grouped-->
+    <div
+      *ngIf="chartType === 'column-grouped'"
+      soho-column
+      [dataset]="chartData"
+      type="column-grouped"
+      (selected)="onSelected($event)"
+      [showLegend]="showLegend"
+    ></div>
+
+    <!-- Column stacked-->
+    <div
+      *ngIf="chartType === 'column-stacked'"
+      soho-column
+      [dataset]="chartData"
+      type="column-stacked"
+      (selected)="onSelected($event)"
+      [showLegend]="showLegend"
+    ></div>
+
+    <!-- Line-->
+    <div
+      *ngIf="chartType === 'line'"
+      soho-line
+      [dataset]="chartData"
+      (selected)="onSelected($event)"
+      [showLegend]="showLegend"
+    ></div>
+
+    <!-- Donut -->
+    <div
+      *ngIf="chartType === 'donut'"
+      soho-pie
+      [dataset]="chartData"
+      [isDonut]="true"
+      [showLegend]="showLegend"
+      (selected)="onSelected($event)"
+      [showLines]="false"
+    ></div>
+
+    <!-- Bubble -->
+    <div
+      *ngIf="chartType === 'bubble'"
+      soho-line
+      [dataset]="chartData"
+      [isBubble]="true"
+      [showLegend]="showLegend"
+      (selected)="onSelected($event)"
+    ></div>
+  </div>
+</div>

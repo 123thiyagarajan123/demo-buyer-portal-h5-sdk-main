@@ -1,0 +1,74 @@
+<div
+  soho-busyindicator
+  [activated]="isBusy"
+  [blockUI]="true"
+  [displayDelay]="0"
+>
+  <!-- Header Area / Search field / Search tag -->
+  <div class="header-area">
+    <div class="title float-left">
+      {{ header }}
+      <span class="datagrid-result-count">
+        ({{ dataset.length }} results)
+      </span>
+    </div>
+    <span class="tag is-dismissible float-right" *ngIf="searchTag">
+      <a href="#">{{ searchTag }}</a>
+      <button
+        class="btn-dismissible"
+        focusable="false"
+        tabindex="-1"
+        (click)="onSearchTagClick()"
+      >
+        <svg
+          class="icon"
+          focusable="false"
+          aria-hidden="true"
+          role="presentation"
+        >
+          <use href="#icon-close"></use>
+        </svg>
+        <span class="audible">Close</span>
+      </button>
+    </span>
+  </div>
+
+  <!-- Listview Area / Search field -->
+  <soho-listview
+    [dataset]="dataset"
+    [searchable]="true"
+    #singleSelectListView
+    [selectable]="'single'"
+    (selected)="onSelected($event)"
+    (deselected)="onDeSelected($event)"
+  >
+    <input
+      soho-searchfield
+      #sohoSearchField
+      placeholder="Filter & Enterprise Search"
+      [clearable]="true"
+      (keydown)="onKey($event)"
+    />
+    <li soho-listview-item *ngFor="let record of dataset">
+      <div class="row padding-sm-b padding-sm-l">
+        <p soho-listview-header>{{ record[mainLine] }}</p>
+      </div>
+      <div class="row padding-sm-b padding-sm-l">
+        <p soho-listview-subheader>{{ record[subLine] }}</p>
+      </div>
+      <div class="row padding-sm-b padding-sm-l">
+        <p soho-listview-micro>{{ record[microLine] }}</p>
+      </div>
+    </li>
+  </soho-listview>
+
+  <!-- <soho-listview [dataset]="dataset" [searchable]="true" #singleSelectListView [selectable]="'single'"
+     (selected)="onSelected($event)" (deselected)="onDeSelected($event)">
+     <input soho-searchfield placeholder="Search" [clearable]="true">
+     <li soho-listview-item *ngFor="let record of dataset">
+        <p *ngIf="mainLine" soho-listview-header>{{ record[mainLine] }}</p>
+        <p *ngIf="subLine" soho-listview-subheader>{{ record[subLine] }}</p>
+        <p *ngIf="microLine" soho-listview-micro>{{ record[microLine] }}</p>
+     </li>
+  </soho-listview> -->
+</div>

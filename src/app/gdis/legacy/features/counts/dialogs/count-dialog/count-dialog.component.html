@@ -1,0 +1,139 @@
+<ng-container *transloco="let t">
+  <div
+    soho-busyindicator
+    [ngClass]="{ add: action == 0, edit: action == 1, delete: action == 2 }"
+    [activated]="isBusy"
+    [blockUI]="true"
+    [displayDelay]="0"
+  >
+    <form class="form-responsive">
+      <div class="row">
+        <div class="twelve columns">
+          <!-- Add/Edit count -->
+          <div *ngIf="action == 0 || action == 1">
+            <div>
+              <!-- Name -->
+              <div>
+                <div>
+                  <label for="name">{{ t("countName") }}</label>
+                </div>
+                <input id="name" name="name" [(ngModel)]="count.name" />
+              </div>
+
+              <!-- Type -->
+              <div *ngIf="false">
+                <div>
+                  <label>{{ t("buttonLinkType") }}</label>
+                </div>
+
+                <select
+                  name="link-type-dropdown"
+                  soho-dropdown
+                  [(ngModel)]="count.type"
+                >
+                  <option></option>
+                  <option
+                    *ngFor="let option of options"
+                    [ngValue]="option.value"
+                  >
+                    {{ option.text }}
+                  </option>
+                </select>
+              </div>
+
+              <!-- Text -->
+              <div>
+                <div>
+                  <label for="text">{{ t("countText") }}</label>
+                </div>
+                <input id="text" name="text" [(ngModel)]="count.text" />
+              </div>
+
+              <!-- ApiProgram -->
+              <div>
+                <div>
+                  <label for="apiProgram">{{ t("countApiProgram") }}</label>
+                </div>
+                <input
+                  id="apiProgram"
+                  name="apiProgram"
+                  [(ngModel)]="count.apiProgram"
+                />
+              </div>
+
+              <!-- ApiTransaction -->
+              <div>
+                <div>
+                  <label for="apiTransaction">{{
+                    t("countApiTransaction")
+                  }}</label>
+                </div>
+                <input
+                  id="apiTransaction"
+                  name="apiTransaction"
+                  [(ngModel)]="count.apiTransaction"
+                />
+              </div>
+
+              <!-- Arguments -->
+              <div>
+                <div>
+                  <label for="query">{{ t("countArguments") }}</label>
+                </div>
+                <input id="query" name="query" [(ngModel)]="count.query" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Delete count -->
+          <div *ngIf="action == 2">
+            <!-- Name -->
+            <div>
+              <div>
+                <label for="name">{{ t("countName") }}</label>
+              </div>
+              <input
+                id="name"
+                name="name"
+                [(ngModel)]="count.name"
+                [readonly]="action == 2"
+              />
+            </div>
+            <!-- Text -->
+            <div>
+              <div>
+                <label for="text">{{ t("countText") }}</label>
+              </div>
+              <input
+                id="text"
+                name="text"
+                [(ngModel)]="count.text"
+                [readonly]="action == 2"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="action-button-group">
+      <button class="btn btn-secondary" (click)="onCancel()">
+        {{ t("countCancel") }}
+      </button>
+      <button
+        *ngIf="action == 0"
+        class="btn btn-primary"
+        [disabled]="count.name.length == 0"
+        (click)="onAdd()"
+      >
+        {{ t("countAdd") }}
+      </button>
+      <button *ngIf="action == 1" class="btn btn-primary" (click)="onEdit()">
+        {{ t("countSave") }}
+      </button>
+      <button *ngIf="action == 2" class="btn btn-primary" (click)="onDelete()">
+        {{ t("countDelete") }}
+      </button>
+    </div>
+  </div>
+</ng-container>

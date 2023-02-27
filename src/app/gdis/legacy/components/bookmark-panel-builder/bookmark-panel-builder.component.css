@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+:host .datepicker {
+  width: 110px;
+}
+
+:host .additionalInfo {
+  min-height: 20px;
+}
+
+:host .additionalInfo > label {
+  font-style: italic;
+  margin-bottom: 0;
+  text-align: right;
+}
+
+:host .dropdown-wrapper {
+  margin-bottom: 0;
+}
+
+:host .is-enabled .field {
+  margin-bottom: 0px;
+}

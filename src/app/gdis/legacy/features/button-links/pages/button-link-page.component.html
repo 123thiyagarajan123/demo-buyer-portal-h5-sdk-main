@@ -1,0 +1,38 @@
+<ng-container *transloco="let t">
+  <div
+    #buttonLinkPlaceholder
+    soho-busyindicator
+    [activated]="isBusy"
+    [blockUI]="true"
+    [displayDelay]="0"
+  >
+    <div class="flex">
+      <div *ngFor="let buttonLink of buttonLinks">
+        <button soho-button="secondary" (click)="onButtonLinkClick(buttonLink)">
+          {{ buttonLink.name }}
+        </button>
+      </div>
+
+      <div *ngIf="isEdit()">
+        <button
+          soho-button="icon"
+          icon="add"
+          title="{{ t('buttonLinkTooltip') }}"
+          (click)="onAddButton()"
+        ></button>
+        <button
+          soho-button="icon"
+          icon="edit"
+          title="{{ t('buttonLinkTooltip') }}"
+          (click)="onEditButton()"
+        ></button>
+        <button
+          soho-button="icon"
+          icon="delete"
+          title="{{ t('buttonLinkTooltip') }}"
+          (click)="onDeleteButton()"
+        ></button>
+      </div>
+    </div>
+  </div>
+</ng-container>

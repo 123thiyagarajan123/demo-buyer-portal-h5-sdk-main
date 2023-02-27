@@ -1,0 +1,49 @@
+<ng-container *transloco="let t">
+  <div
+    #countPlaceholder
+    soho-busyindicator
+    [activated]="isBusy"
+    [blockUI]="true"
+    [displayDelay]="0"
+  >
+    <div class="flex-row">
+      <div class="flex-column" [style.width.px]="getContainerWidth()">
+        <div *ngFor="let count of counts" class="flex-item">
+          <m3-count
+            [selectedParentRecord]="selectedParentRecord"
+            [count]="count"
+            soho-context-menu
+            (beforeopen)="beforeOpen($event, count)"
+            menu="count-action-popupmenu"
+          ></m3-count>
+        </div>
+      </div>
+      <div *ngIf="isEdit()">
+        <button
+          soho-button="icon"
+          icon="add"
+          title="{{ t('countTooltip') }}"
+          (click)="onAddButton()"
+        ></button>
+      </div>
+    </div>
+  </div>
+
+  <ul
+    *ngIf="isEdit()"
+    soho-popupmenu
+    id="count-action-popupmenu"
+    class="popupmenu"
+  >
+    <li soho-popupmenu-item>
+      <a soho-popupmenu-label (click)="onEditCount($event)">{{
+        t("countEditCount")
+      }}</a>
+    </li>
+    <li soho-popupmenu-item>
+      <a soho-popupmenu-label (click)="onDeleteCount($event)">{{
+        t("countDeleteCount")
+      }}</a>
+    </li>
+  </ul>
+</ng-container>

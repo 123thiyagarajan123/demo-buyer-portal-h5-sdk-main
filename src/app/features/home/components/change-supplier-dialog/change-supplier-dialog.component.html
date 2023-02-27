@@ -1,0 +1,56 @@
+<ng-container *transloco="let t">
+  <div
+    soho-busyindicator
+    [activated]="isBusy"
+    [blockUI]="true"
+    [displayDelay]="0"
+  >
+    <div class="row no-indent">
+      <h5-form class="float-left">
+        <fieldset>
+          <div class="summary-form">
+            <div class="float-left">
+              <span class="label">{{ t(Config.Scope + ".poplpn") }}</span>
+              <span class="data">{{ record?.POPLPN }}</span>
+            </div>
+
+            <div class="float-left">
+              <span class="label">{{ t(Config.Scope + ".supplier") }}</span>
+              <span class="data">{{ supplier }} / {{ supplierName }}</span>
+            </div>
+
+            <div class="float-left">
+              <span class="label">{{ t(Config.Scope + ".poitno") }}</span>
+              <span class="data">{{ record?.POITNO }}</span>
+            </div>
+
+            <div class="float-left">
+              <span class="label">{{ t(Config.Scope + ".popitd") }}</span>
+              <span class="data">{{ record?.POPITD }}</span>
+            </div>
+
+            <div class="float-left">
+              <span class="label">{{ t(Config.Scope + ".poppqt") }}</span>
+              <span class="data">{{ record?.POPPQT | number }}</span>
+            </div>
+
+            <div class="float-left">
+              <span class="label">{{ t(Config.Scope + ".popupr") }}</span>
+              <span class="data">{{ record?.POPUPR | number: "1.2-2" }} $</span>
+            </div>
+          </div>
+        </fieldset>
+      </h5-form>
+    </div>
+
+    <div class="row no-indent margin-zero-bottom divider-top">
+      <app-change-supplier-list
+        [selectedParentRecord]="record"
+        header="{{ t(Config.Scope + '.purchaseAgreement') }}"
+        (selectionChanged)="selectionChanged($event)"
+        apiProgram="CMS100MI"
+        apiTransaction="LstZBP_MPAGRP"
+      ></app-change-supplier-list>
+    </div>
+  </div>
+</ng-container>

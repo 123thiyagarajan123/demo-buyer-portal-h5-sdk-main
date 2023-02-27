@@ -1,0 +1,21 @@
+:host .recordCount span {
+  min-width: 23px !important;
+}
+
+:host .blue {
+  background-color: #2578a9 !important;
+  color: #fff !important;
+}
+
+:host .green {
+  background-color: #80ce4d !important;
+}
+
+:host .yellow {
+  background-color: #ffd726 !important;
+}
+
+:host .red {
+  background-color: #e84f4f !important;
+  color: #fff !important;
+}

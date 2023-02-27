@@ -1,0 +1,22 @@
+<div class="demo-lookup">
+  <!-- Label -->
+  <div class="demo-lookup-label" *ngIf="heading">
+    <label for="lookup"> {{ heading }} </label>
+  </div>
+
+  <!-- Lookup -->
+  <input
+    id="demo-lookup-input"
+    soho-lookup
+    class="demo-lookup-uppercase"
+    (change)="onChange($event)"
+    type="text"
+  />
+
+  <!-- Additional Info -->
+  <div class="demo-lookup-additionalInfo">
+    <label *ngIf="record && additionalInfoField">{{
+      record[additionalInfoField]
+    }}</label>
+  </div>
+</div>

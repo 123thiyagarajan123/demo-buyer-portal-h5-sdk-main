@@ -1,0 +1,15 @@
+<div
+  *ngFor="let drillBack of relatedInformation?.drillBacks"
+  class="drillback-content"
+>
+  <div
+    class="drillback-link"
+    [class.disabled]="relatedInformation.record === null ? true : null"
+    (click)="executeDrillBack(drillBack, relatedInformation)"
+  >
+    <svg soho-icon icon="tree-link"></svg>
+    <a>
+      <span>{{ drillBack.name }}</span>
+    </a>
+  </div>
+</div>

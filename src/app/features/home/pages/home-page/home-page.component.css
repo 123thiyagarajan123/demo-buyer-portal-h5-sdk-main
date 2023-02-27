@@ -1,0 +1,67 @@
+.thinner-padding {
+  padding: 20px 10px 20px 20px !important;
+}
+
+.no-max-width {
+  max-width: 100% !important;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail section {
+  position: relative;
+  top: -100px;
+}
+
+.master-detail {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px);
+}
+
+.padding-top-40 {
+  padding-top: 40px;
+}
+
+.padding-bottom-20 {
+  padding-bottom: 20px;
+}
+
+.detail {
+  height: 100%;
+}
+
+.sidebar {
+  width: 250px;
+}
+
+.main {
+  width: calc(100% - 250x);
+}
+
+.limit-width {
+  max-width: 220px;
+}
+
+.margin-zero-bottom {
+  margin-bottom: 0px;
+}
+
+.divider-top {
+  border-top: 1px solid #b7b7ba;
+  padding-top: 20px;
+  margin-top: 10px;
+}
+
+@media (max-width: 766px) {
+  .sidebar {
+    width: unset;
+  }
+
+  .main {
+    width: 100%;
+  }
+}

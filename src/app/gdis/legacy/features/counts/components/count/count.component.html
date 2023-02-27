@@ -1,0 +1,15 @@
+<div
+  class="recordCount busy-sm"
+  soho-busyindicator
+  [activated]="isBusy"
+  [blockUI]="true"
+  [displayDelay]="0"
+>
+  <div class="count">
+    <button soho-button="icon" icon="refresh" (click)="onRefresh()"></button>
+    <a class="hyperlink object-count">
+      <span class="xl-text"> {{ count.recordCount }}</span>
+      <span>{{ count.text }} </span>
+    </a>
+  </div>
+</div>

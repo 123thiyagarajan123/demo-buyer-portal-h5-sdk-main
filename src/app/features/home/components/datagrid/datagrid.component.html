@@ -1,0 +1,102 @@
+<ng-container *transloco="let t">
+  <div class="container" *ngIf="isReady">
+    <div class="row no-max-width">
+      <h5-form>
+        <div class="group1">
+          <!-- From date -->
+          <div class="field" *ngIf="isDateRange">
+            <label soho-label attr.for="frdt">{{
+              t("datagridFromDepDt")
+            }}</label>
+            <input
+              name="frdt"
+              soho-datepicker
+              mode="standard"
+              [(ngModel)]="fromDate"
+              (change)="onFromDateChanged($event)"
+            />
+          </div>
+
+          <!-- To date -->
+          <div class="field" *ngIf="isDateRange">
+            <label soho-label attr.for="todt">{{ t("datagridToDepDt") }}</label>
+            <input
+              name="todt"
+              class="margin-xl-b"
+              soho-datepicker
+              mode="standard"
+              [(ngModel)]="toDate"
+              (change)="onToDateChanged($event)"
+            />
+          </div>
+
+          <!-- Search field -->
+          <div class="field" *ngIf="isSearchable">
+            <label soho-label attr.for="search">{{
+              t("datagridSearch")
+            }}</label>
+            <input
+              name="search"
+              soho-searchfield
+              [options]="searchOptions"
+              (keyup)="onKey($event)"
+              [clearable]="false"
+              [(ngModel)]="searchQuery"
+            />
+          </div>
+
+          <!-- Apply button -->
+          <div class="field apply-button" *ngIf="isDateRange || isSearchable">
+            <button soho-button="btn" (click)="onApply()">
+              {{ t("datagridApply") }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Max number of records -->
+        <div class="field" *ngIf="isMaxRecordCounter">
+          <label soho-label attr.for="maxRecords">{{
+            t("datagridMaxRecords")
+          }}</label>
+
+          <select
+            soho-dropdown
+            id="maxRecords"
+            name="maxRecords"
+            [(ngModel)]="maxRecords"
+            (change)="onMaxRecordsChange()"
+          >
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="500">500</option>
+            <option value="1000">1000</option>
+          </select>
+        </div>
+      </h5-form>
+    </div>
+
+    <div class="row no-indent no-max-width">
+      <!-- Refresh button -->
+      <div class="field refresh-button">
+        <button soho-button="btn" icon="refresh" (click)="onApply()">
+          <span>{{ t("datagridRefresh") }}</span>
+        </button>
+      </div>
+
+      <!-- Datagrid -->
+      <div
+        class="demoDataGrid"
+        soho-datagrid="auto"
+        [gridOptions]="datagridOptions"
+        [rowHeight]="(store$ | async)?.size?.rowSize || 'small'"
+        soho-busyindicator
+        [activated]="isBusy"
+        [blockUI]="true"
+        [displayDelay]="0"
+        (selected)="onSelected($event)"
+        (rowActivated)="onRowActivated($event)"
+        (rowDeactivated)="onRowDeactivated($event)"
+      ></div>
+    </div>
+  </div>
+</ng-container>

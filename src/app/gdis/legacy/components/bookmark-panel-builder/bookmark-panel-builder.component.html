@@ -1,0 +1,170 @@
+<div #PanelBuilder>
+  <!-- <div *ngFor="let info of formControls" [hidden]="
+      !info.control!.isVisible ||
+      (searchField?.length > 0 &&
+        (!info.label ||
+          !info.label.value
+            .toLocaleLowerCase()
+            .includes(searchField.toLocaleLowerCase())))
+    "> -->
+  <div *ngFor="let info of formControls" [hidden]="!info.control!.isVisible">
+    <!-- Editable -->
+    <div *ngIf="info.control!.isEnabled" class="is-enabled">
+      <!-- Field Heading -->
+      <div class="field" [class.no-margin-bottom]="info.additionalInfo">
+        <div>
+          <label *ngIf="info.label" for="{{ info.control!.id }}">{{
+            info.label.value
+          }}</label>
+        </div>
+
+        <!-- Inputs / Lookups -->
+        <div *ngIf="info.control!.type == 2">
+          <!-- Password -->
+          <div class="field" *ngIf="info.control!.isReadDisabled">
+            <input
+              id="{{ info.control!.id }}"
+              name="{{ info.control!.name }}"
+              type="password"
+              [(ngModel)]="info.control!.value"
+            />
+          </div>
+
+          <!-- Text -->
+          <div
+            class="field"
+            *ngIf="
+              !(getInfoControlIsBrowsable(info) || info.control!.isReadDisabled)
+            "
+          >
+            <input
+              id="{{ info.control!.id }}"
+              name="{{ info.control!.name }}"
+              type="text"
+              [(ngModel)]="info.control!.value"
+            />
+          </div>
+
+          <!-- Lookup -->
+          <div
+            class="field"
+            *ngIf="
+              !!getInfoControlIsBrowsable(info) && !info.control!.isReadDisabled
+            "
+          >
+            <input
+              id="{{ info.control!.id }}"
+              name="{{ info.control!.name }}"
+              soho-lookup
+              (change)="onChange($event)"
+              [(ngModel)]="info.control!.value"
+            />
+          </div>
+        </div>
+
+        <!-- Checkbox -->
+        <div *ngIf="info.control!.type == 3">
+          <div class="field">
+            <input
+              type="checkbox"
+              class="checkbox"
+              id="{{ info.control!.id }}"
+              [checked]="info.control!.value"
+            />
+            <label for="{{ info.control!.id }}" class="checkbox-label"></label>
+          </div>
+        </div>
+
+        <!-- Selects -->
+        <div *ngIf="info.control!.type == 4">
+          <div class="field">
+            <select
+              id="{{ info.control!.id }}"
+              name="{{ info.control!.name }}"
+              soho-dropdown
+              [(ngModel)]="info.control!.value"
+            >
+              <option
+                *ngFor="let item of getInfoControlItems(info)"
+                [value]="item.value"
+              >
+                {{ item.text }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Dates -->
+        <div *ngIf="info.control!.type == 5">
+          <div class="field">
+            <input
+              id="{{ info.control!.id }}"
+              name="{{ info.control!.name }}"
+              soho-datepicker
+              mode="standard"
+              type="text"
+              [dateFormat]="dateFormat"
+              (change)="onDateChange($event)"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Info -->
+      <div
+        class="additionalInfo"
+        *ngIf="
+          showAdditionalInfo == 'yes' ||
+          (info.additionalInfo && showAdditionalInfo == 'applicable')
+        "
+      >
+        <label *ngIf="info.additionalInfo">{{
+          info.additionalInfo.value
+        }}</label>
+      </div>
+    </div>
+
+    <!-- Readonly -->
+    <div *ngIf="!info.control!.isEnabled" class="summary-form">
+      <!-- Inputs / Lookups -->
+      <div *ngIf="info.control!.type == 2" class="field">
+        <span class="label"> {{ info.label ? info.label!.value : "" }}</span>
+        <!-- <div style="display: flex" [ngClass]="info.control['cssClass']"> -->
+        <div style="display: flex">
+          <span class="data">{{ info.control!.value }}</span>
+          <span *ngIf="info.additionalInfo" class="data">-</span>
+          <span *ngIf="info.additionalInfo" class="data">{{
+            info.additionalInfo.value
+          }}</span>
+        </div>
+      </div>
+
+      <!-- Checkbox -->
+      <!-- <div *ngIf="info.control!.type==3 ">
+                <div class="field ">
+                    <input type="checkbox " class="checkbox " id="{{ info.control!.id }} " disabled [checked]="info.control!.value " />
+                    <label for="{{ info.control!.id }} " class="checkbox-label "></label>
+                </div>
+            </div> -->
+
+      <!-- Selects -->
+      <div *ngIf="info.control!.type == 4" class="field">
+        <span class="label"> {{ info.label ? info.label!.value : "" }}</span>
+        <div style="display: flex">
+          <!-- <span class="data ">{{ info.control!.name }}</span>
+          <span *ngIf="info.additionalInfo " class="data ">-</span> -->
+          <span class="data">{{ getInfoControlSelectedText(info) }}</span>
+        </div>
+      </div>
+
+      <!-- <div *ngIf="info.control!.type==4 ">
+                <label id="{{ info.control!.id }} " name="{{ info.control!.name }} " style="margin-right: 2px; font-weight: bold; "> {{ info.control['selected'].text }}</label>
+            </div> -->
+
+      <!-- Dates -->
+      <!-- <div *ngIf="info.control!.type==5 " class="date-readonly ">
+                <input id="{{ info.control!.id }} " name="{{ info.control!.name }} " soho-datepicker mode="standard " type="text " [dateFormat]="dateFormat " [readonly]="true " />
+            </div> -->
+    </div>
+  </div>
+</div>

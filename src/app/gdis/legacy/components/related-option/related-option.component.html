@@ -1,0 +1,59 @@
+<div>
+  <h1 class="padding-xl">{{ heading }}</h1>
+
+  <div *ngFor="let relatedInformation of relatedInformations">
+    <soho-accordion
+      #accordion
+      [allowOnePane]="false"
+      [displayChevron]="true"
+      [rerouteOnLinkClick]="false"
+    >
+      <soho-accordion-header [isExpanded]="true">{{
+        relatedInformation?.name
+      }}</soho-accordion-header>
+      <soho-accordion-pane>
+        <!-- Drillbacks  -->
+        <div *ngFor="let drillBack of relatedInformation?.drillBacks">
+          <div
+            class="accordion-content"
+            [attr.disabled]="relatedInformation.record == null ? true : null"
+            (click)="executeDrillBack(drillBack, relatedInformation)"
+          >
+            <svg soho-icon icon="link"></svg>
+            <a>
+              <span>{{ drillBack.name }}</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Actions  -->
+        <div *ngFor="let action of relatedInformation?.actions">
+          <div
+            class="accordion-content"
+            [attr.disabled]="relatedInformation.record == null ? true : null"
+            (click)="executeAction(action, relatedInformation)"
+          >
+            <svg soho-icon icon="link"></svg>
+            <a>
+              <span>{{ action.name }}</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Custom Actions  -->
+        <div *ngFor="let customAction of relatedInformation?.customActions">
+          <div
+            class="accordion-content"
+            [attr.disabled]="relatedInformation.record == null ? true : null"
+            (click)="executeCustomAction(customAction, relatedInformation)"
+          >
+            <svg soho-icon icon="link"></svg>
+            <a>
+              <span>{{ customAction.name }}</span>
+            </a>
+          </div>
+        </div>
+      </soho-accordion-pane>
+    </soho-accordion>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<ng-container *transloco="let t">
+  <div soho-tabs [vertical]="true" containerElement="#tabContainer">
+    <div soho-tab-list-container [verticalScrolling]="true">
+      <div class="tab-list-info">
+        <h2>{{ t("settings.title") }}</h2>
+      </div>
+
+      <ul soho-tab-list>
+        <li soho-tab>
+          <a
+            soho-tab-title
+            [tabId]="Tab.Theme"
+            [routerLink]="['/', 'settings', 'theme']"
+            >{{ t("settings.themeTitle") }}</a
+          >
+        </li>
+        <li soho-tab>
+          <a
+            soho-tab-title
+            [tabId]="Tab.Size"
+            [routerLink]="['/', 'settings', 'size']"
+            >{{ t("settings.sizeTitle") }}</a
+          >
+        </li>
+        <li soho-tab>
+          <a
+            soho-tab-title
+            [tabId]="Tab.Language"
+            [routerLink]="['/', 'settings', 'language']"
+            >{{ t("settings.languageTitle") }}</a
+          >
+        </li>
+        <li soho-tab>
+          <a
+            soho-tab-title
+            [tabId]="Tab.Debug"
+            [routerLink]="['/', 'settings', 'debug']"
+            >{{ t("settings.debugTitle") }}</a
+          >
+        </li>
+        <li soho-tab>
+          <a
+            soho-tab-title
+            [tabId]="Tab.Debug"
+            [routerLink]="['/', 'settings', 'monitor']"
+            >{{ t("settings.monitorTitle") }}</a
+          >
+        </li>
+        <li soho-tab>
+          <a
+            soho-tab-title
+            [tabId]="Tab.Debug"
+            [routerLink]="['/', 'settings', 'button-link']"
+            >{{ t("settings.buttonLinkTitle") }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-container>

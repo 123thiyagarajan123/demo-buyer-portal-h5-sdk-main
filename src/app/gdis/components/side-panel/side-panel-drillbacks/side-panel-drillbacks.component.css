@@ -1,0 +1,23 @@
+.drillback-content {
+  padding: 20px 0 0 0;
+}
+
+.drillback-link {
+  display: flex;
+  align-items: center;
+}
+
+.drillback-link.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.drillback-link:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.drillback-link > svg {
+  margin-right: 10px;
+}

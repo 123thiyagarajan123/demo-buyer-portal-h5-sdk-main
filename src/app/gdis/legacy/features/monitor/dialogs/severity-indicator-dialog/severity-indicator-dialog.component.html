@@ -1,0 +1,62 @@
+<ng-container *transloco="let t">
+  <div>
+    <form class="form-responsive">
+      <div class="row">
+        <div class="twelve columns">
+          <label for="monitor-slider">
+            {{ t("monitorSliderDescription") }}</label
+          >
+          <input
+            soho-slider
+            id="monitor-slider"
+            name="monitor-slider"
+            [value]="startValue"
+            [min]="0"
+            [max]="3"
+            [step]="1"
+            [ticks]="ticks"
+            [(ngModel)]="severity"
+            (change)="onSlide($event)"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="twelve columns">
+          <div>
+            <label for="higherThan">{{ t("monitorSliderHigher") }}</label>
+          </div>
+          <input
+            id="higherThan"
+            name="higherThan"
+            [(ngModel)]="higherThan"
+            (change)="onHigherChange()"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="twelve columns">
+          <div>
+            <label for="lowerThan">{{ t("monitorSliderLower") }}</label>
+          </div>
+          <input
+            id="lowerThan"
+            name="lowerThan"
+            [(ngModel)]="lowerThan"
+            (change)="onLowerChange()"
+          />
+        </div>
+      </div>
+
+      <div class="action-button-group">
+        <button class="btn btn-secondary" (click)="onCancel()">
+          {{ t("monitorCancel") }}
+        </button>
+        <button class="btn btn-secondary" (click)="onOkay()">
+          {{ t("monitorOk") }}
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-container>

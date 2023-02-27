@@ -1,0 +1,17 @@
+{
+  "title": "Settings",
+  "themeTitle": "Theme",
+  "sizeTitle": "Size",
+  "languageTitle": "Language",
+  "languageLabel": "Language",
+  "formSizeLabel": "Form Size",
+  "rowSizeLabel": "Row Size",
+  "themeColorLabel": "Theme Colors",
+  "themeModeLabel": "Theme",
+  "debugTitle": "Debug",
+  "debugLevelLabel": "Log Level",
+  "monitorTitle": "Monitor",
+  "monitorLabel": "Monitor Level",
+  "buttonLinkTitle": "Button Link",
+  "buttonLinkLabel": "Button Link Level"
+}

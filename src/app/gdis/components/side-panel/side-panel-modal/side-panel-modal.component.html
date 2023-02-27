@@ -1,0 +1,73 @@
+<ng-container *transloco="let t">
+  <app-form [formGroup]="rootForm">
+    <div class="row">
+      <div class="twelve columns">
+        <div class="field">
+          <label soho-label [attr.for]="ACTION_DROPDOWN">{{
+            t("shortcutActionLabel")
+          }}</label>
+
+          <select
+            soho-dropdown
+            [noSearch]="true"
+            [id]="ACTION_DROPDOWN"
+            [name]="ACTION_DROPDOWN"
+            [formControlName]="ACTION_DROPDOWN"
+          >
+            <option *ngFor="let action of this.actions" [value]="action">
+              {{ ShortcutAction[action] }}
+            </option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label soho-label [attr.for]="TYPE_DROPDOWN">{{
+            t("shortcutActionType")
+          }}</label>
+
+          <select
+            soho-dropdown
+            [noSearch]="true"
+            [id]="TYPE_DROPDOWN"
+            [name]="TYPE_DROPDOWN"
+            [formControlName]="TYPE_DROPDOWN"
+          >
+            <option *ngFor="let type of this.types" [value]="type">
+              {{ ShortcutType[type] }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="twelve columns">
+        <p *ngIf="rootForm.value.type === ShortcutType.Url">Url</p>
+        <p *ngIf="rootForm.value.type === ShortcutType.Bookmark">Bookmark</p>
+        <p *ngIf="rootForm.value.type === ShortcutType.Mashup">Mashup</p>
+        <p *ngIf="rootForm.value.type === ShortcutType.Program">Program</p>
+
+        <div class="field">
+          <label soho-label [attr.for]="VALUE_INPUT">{{
+            t("shortcutActionValue")
+          }}</label>
+
+          <input
+            soho-input
+            [id]="VALUE_INPUT"
+            [name]="VALUE_INPUT"
+            [formControlName]="VALUE_INPUT"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="twelve columns">
+        <br />Dirty: {{ rootForm.dirty }} <br />Touched: {{ rootForm.touched }}
+        <br />Valid: {{ rootForm.valid }} <br />Value:
+        {{ rootForm.value | json }}
+      </div>
+    </div>
+  </app-form>
+</ng-container>

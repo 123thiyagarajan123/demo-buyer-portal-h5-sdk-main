@@ -1,0 +1,26 @@
+<div class="demo-multiselect">
+  <!-- Label -->
+  <div class="demo-field-label">
+    <label>{{ heading }}</label>
+  </div>
+
+  <!-- Dropdown -->
+  <select
+    soho-dropdown
+    [multiple]="true"
+    moveSelected="all"
+    [closeOnSelect]="false"
+    [(ngModel)]="selectedRecords"
+    [disabled]="disabled"
+    (change)="onChange()"
+  >
+    <ng-container *ngFor="let record of records">
+      <option *ngIf="!showAdditionalFieldOnly" [ngValue]="record">
+        {{ record[field] }} - {{ record[additionalInfoField] }}
+      </option>
+      <option *ngIf="showAdditionalFieldOnly" [ngValue]="record">
+        {{ record[additionalInfoField] }}
+      </option>
+    </ng-container>
+  </select>
+</div>

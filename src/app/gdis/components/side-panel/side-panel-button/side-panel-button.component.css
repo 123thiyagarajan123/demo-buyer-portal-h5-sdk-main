@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  justify-content: flex-end;
+  height: 30px;
+  padding: 0 1.3rem;
+}
+
+div {
+  padding: 4px;
+}

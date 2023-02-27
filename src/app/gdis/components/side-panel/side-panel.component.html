@@ -1,0 +1,11 @@
+<soho-splitter [save]="false" (split)="onResize($event)"></soho-splitter>
+
+<h5-side-panel-content *ngIf="(store$ | async)?.shortcut as shortcut">
+  <!-- <h5-side-panel-button (clicked)="openFullSize()"></h5-side-panel-button> -->
+
+  <h5-side-panel-section *ngIf="shortcut.relatedInformations.length">
+    <h5-side-panel-links
+      [relatedInformations]="shortcut.relatedInformations"
+    ></h5-side-panel-links>
+  </h5-side-panel-section>
+</h5-side-panel-content>

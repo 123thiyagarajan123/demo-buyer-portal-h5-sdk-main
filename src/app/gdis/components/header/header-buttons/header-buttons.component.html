@@ -1,0 +1,10 @@
+<button
+  *ngFor="let button of header.buttons"
+  [soho-button]="button.variant"
+  [icon]="button.icon"
+  [disabled]="button.disabled"
+  [hidden]="button.hidden"
+  (click)="button.onClick()"
+>
+  {{ button.text }}
+</button>

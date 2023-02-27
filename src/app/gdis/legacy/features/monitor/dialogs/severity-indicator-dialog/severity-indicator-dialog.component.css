@@ -1,0 +1,8 @@
+:host > div {
+  margin-right: 30px;
+}
+
+:host .action-button-group {
+  display: flex;
+  padding: 20px;
+}

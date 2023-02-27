@@ -1,0 +1,29 @@
+<ng-container *transloco="let t">
+  <div
+    #monitorPlaceholder
+    soho-busyindicator
+    [activated]="isBusy"
+    [blockUI]="true"
+    [displayDelay]="0"
+  >
+    <!-- <div class="flex" *ngIf="monitorGroups.length > 0"> -->
+    <div class="flex">
+      <div *ngFor="let monitorGroup of monitorGroups">
+        <demo-monitor-group
+          [selectedParentRecord]="selectedParentRecord"
+          [monitorGroup]="monitorGroup"
+          [header]="monitorGroup.name"
+          [canEdit]="isEdit()"
+        ></demo-monitor-group>
+      </div>
+      <button
+        *ngIf="isEdit()"
+        class="add-monitor-group"
+        soho-button="icon"
+        icon="add"
+        title="{{ t('monitorTooltip') }}"
+        (click)="onAddMonitorGroup()"
+      ></button>
+    </div>
+  </div>
+</ng-container>

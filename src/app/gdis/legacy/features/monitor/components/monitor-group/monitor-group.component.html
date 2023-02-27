@@ -1,0 +1,89 @@
+<ng-container *transloco="let t">
+  <div>
+    <soho-card>
+      <soho-card-header>
+        <h2 class="widget-title">{{ monitorGroup.name }}</h2>
+        <div>
+          <button
+            soho-button="icon"
+            icon="refresh"
+            (click)="onRefresh()"
+          ></button>
+          <button
+            *ngIf="canEdit"
+            soho-button="icon"
+            icon="more"
+            soho-context-menu
+            menu="monitor-group-action-popupmenu"
+            trigger="click"
+            class="btn-actions"
+          ></button>
+        </div>
+      </soho-card-header>
+
+      <div
+        class="card-content"
+        soho-busyindicator
+        [activated]="isBusy"
+        [blockUI]="true"
+        [displayDelay]="0"
+      >
+        <soho-listview>
+          <li
+            soho-listview-item
+            [ngClass]="getBadgeColor(monitor)"
+            *ngFor="let monitor of monitorGroup.monitors"
+            (selected)="onSelected(monitor)"
+            soho-context-menu
+            menu="monitor-action-popupmenu"
+          >
+            <div class="li-content">
+              <p soho-listview-header>{{ monitor.name }}</p>
+              <m3-monitor
+                [selectedParentRecord]="selectedParentRecord"
+                [monitor]="monitor"
+              ></m3-monitor>
+            </div>
+          </li>
+        </soho-listview>
+      </div>
+    </soho-card>
+  </div>
+
+  <ul *ngIf="canEdit" soho-popupmenu id="monitor-action-popupmenu">
+    <li soho-popupmenu-item>
+      <a soho-popupmenu-label (click)="onEditMonitor($event)">{{
+        t("monitorEditMonitor")
+      }}</a>
+    </li>
+    <li soho-popupmenu-item>
+      <a soho-popupmenu-label (click)="onDeleteMonitor($event)">{{
+        t("monitorDeleteMonitor")
+      }}</a>
+    </li>
+  </ul>
+
+  <ul
+    *ngIf="canEdit"
+    soho-popupmenu
+    id="monitor-group-action-popupmenu"
+    (selected)="onRefresh()"
+  >
+    <li soho-popupmenu-item>
+      <a soho-popupmenu-label (click)="onAddMonitor()">{{
+        t("monitorAddMonitor")
+      }}</a>
+    </li>
+    <li soho-popupmenu-separator></li>
+    <li soho-popupmenu-item>
+      <a soho-popupmenu-label (click)="onEditMonitorGroup()">{{
+        t("monitorEditMonitorGroup")
+      }}</a>
+    </li>
+    <li soho-popupmenu-item>
+      <a soho-popupmenu-label (click)="onDeleteMonitorGroup()">{{
+        t("monitorDeleteMonitorGroup")
+      }}</a>
+    </li>
+  </ul>
+</ng-container>

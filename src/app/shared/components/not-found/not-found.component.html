@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="twelve columns">
+    <div class="error-page-context">
+      <div class="error-page-content">
+        <div class="error-page-icon">
+          <svg
+            class="icon-empty-state"
+            focusable="false"
+            aria-hidden="true"
+            role="presentation"
+          >
+            <use href="#icon-empty-error-loading"></use>
+          </svg>
+        </div>
+
+        <div class="error-page-title">{{ title }}</div>
+
+        <div class="error-page-info">
+          {{ info }}
+        </div>
+
+        <div *ngIf="currentUrl" class="error-page-info">
+          {{ currentUrl }}
+        </div>
+
+        <div class="error-page-button">
+          <button
+            (click)="onClick()"
+            type="button"
+            class="btn btn-primary"
+            id="error-page-btn-id-1"
+            data-automation-id="automation-id-errorpage-btn-1"
+          >
+            <span>{{ buttonName }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

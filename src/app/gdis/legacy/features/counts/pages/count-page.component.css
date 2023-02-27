@@ -1,0 +1,20 @@
+:host button {
+  margin-right: 20px !important;
+}
+
+:host .flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+:host .flex-column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 390px;
+}
+
+:host .flex-item {
+  flex: 1 1 auto;
+}

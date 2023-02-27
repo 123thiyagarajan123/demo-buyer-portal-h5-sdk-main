@@ -1,0 +1,60 @@
+<div
+  soho-busyindicator
+  [activated]="isBusy"
+  [blockUI]="true"
+  [displayDelay]="0"
+>
+  <!-- Header area -->
+  <div *ngIf="controlInfos || isError">
+    <div [hidden]="isHideHeader || isUsedInDialog">
+      <div class="form-section-header">
+        <div>{{ header }}</div>
+        <div class="action-buttons">
+          <button
+            *ngIf="isDrillEnabled && !isError"
+            class="btn-icon"
+            title="view"
+            (click)="onDrillClick(5)"
+          >
+            <svg soho-icon icon="drilldown"></svg>
+          </button>
+          <button
+            *ngIf="isDrillEditEnabled && !isError"
+            class="btn-icon"
+            title="edit"
+            (click)="onDrillClick(2)"
+          >
+            <svg soho-icon icon="edit" class="demo-panel-edit-icon"></svg>
+          </button>
+          <button
+            *ngIf="isDirty && !isError"
+            title="Save"
+            class="btn-icon"
+            (click)="onSave()"
+          >
+            <svg soho-icon icon="save"></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="controlInfos && !isError">
+    <!-- Field detail area -->
+    <div>
+      <m3-bookmark-panel-builder
+        #PanelBuilder
+        (visibleElementChanged)="onVisibleElementChanged($event)"
+        [formControls]="controlInfos"
+        [bookmark]="bookmark"
+        [showAdditionalInfo]="showAdditionalInfo"
+        [searchField]="searchField"
+      >
+      </m3-bookmark-panel-builder>
+    </div>
+  </div>
+
+  <div *ngIf="isError">
+    <label class="padding-md-l no-data-found">No Data Found</label>
+  </div>
+</div>

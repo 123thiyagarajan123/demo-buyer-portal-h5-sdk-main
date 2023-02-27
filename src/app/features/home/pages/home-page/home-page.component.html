@@ -1,0 +1,267 @@
+<ng-container *transloco="let t">
+  <h5-main
+    [pageContainer]="true"
+    [scrollable]="true"
+    [twoColumn]="true"
+    soho-busyindicator
+    [activated]="isBusy"
+    [blockUI]="true"
+    [displayDelay]="0"
+  >
+    <h5-frame [sidebar]="true" [scrollableY]="true" [class.hidden]="!isOpen">
+      <app-home-search
+        (selectedItem)="onSelectedSupplier($event)"
+        (warehousesFoundBubbleUp)="warehousesFound($event)"
+      >
+      </app-home-search>
+    </h5-frame>
+
+    <h5-frame [main]="true" [scrollableY]="true">
+      <div class="master-detail">
+        <div class="master thinner-padding">
+          <div class="flex-space-between">
+            <label
+              *ngIf="supplier && supplier.POSUNO && supplier.IDSUNM"
+              class="font-size-px-20"
+            >
+              {{ t(Config.Scope + ".supplier") }} {{ supplier?.POSUNO }} /
+              {{ supplier?.IDSUNM }}
+            </label>
+            <label
+              *ngIf="supplier && supplier.POSUNO && !supplier.IDSUNM"
+              class="font-size-px-20"
+            >
+              {{ t(Config.Scope + ".supplier") }} {{ supplier?.POSUNO }}
+            </label>
+            <label *ngIf="supplier && !supplier.POSUNO" class="font-size-px-20">
+              {{ t(Config.Scope + ".noSupplierSelected") }}
+            </label>
+            <m3-button-link-page
+              [selectedParentRecord]="supplier"
+            ></m3-button-link-page>
+          </div>
+          <div class="row no-indent divider-top no-max-width" *ngIf="supplier">
+            <div class="twelve columns">
+              <app-datagrid
+                *ngIf="supplier"
+                personalizationProgram="PPS170"
+                header="{{ t(Config.Scope + '.ordersForSelectedSupplier') }}"
+                [selectedParentRecord]="supplier"
+                apiProgram="CMS100MI"
+                apiTransaction="LstZBP_MPOPLPs"
+                [isAdvancedFiltering]="true"
+                [isDateRange]="false"
+                [isDrillable]="false"
+                [isMaxRecordCounter]="false"
+                [isQuickView]="true"
+                [isSearchable]="false"
+                (selectedRowsChanged)="orderSelectionChanged($event)"
+                (rowActivated)="rowActivated($event)"
+              ></app-datagrid>
+            </div>
+          </div>
+          <div
+            class="row no-indent padding-bottom-20 no-max-width"
+            *ngIf="supplier"
+          >
+            <button
+              soho-button="primary"
+              (click)="openAddLineDialog()"
+              [disabled]="!supplier?.POSUNO"
+            >
+              {{ t(Config.Scope + ".addLine") }}
+            </button>
+            <button
+              soho-button="primary"
+              [disabled]="currentRecords.length === 0"
+              (click)="openDeleteLineDialog()"
+            >
+              {{ t(Config.Scope + ".deleteLine") }}
+            </button>
+            <button
+              soho-button="secondary"
+              [disabled]="currentRecords.length === 0"
+              (click)="releaseLines()"
+            >
+              {{ t(Config.Scope + ".releaseLine") }}
+            </button>
+            <button
+              soho-button="secondary"
+              [disabled]="currentRecords.length !== 1"
+              (click)="openChangeSupplierDialog()"
+            >
+              {{ t(Config.Scope + ".changeSupplierAgreement") }}
+            </button>
+            <button
+              soho-button="secondary"
+              (click)="releaseProposals()"
+              [disabled]="!supplier?.POSUNO"
+            >
+              {{ t(Config.Scope + ".releaseProposals") }}
+            </button>
+          </div>
+          <div
+            class="row no-indent margin-zero-bottom no-max-width"
+            *ngIf="supplier"
+          >
+            <div class="three columns">
+              <h5-form>
+                <fieldset>
+                  <legend>{{ t(Config.Scope + ".packagingLimits") }}</legend>
+
+                  <div class="field float-left limit-width">
+                    <label for="buyers" class="label">{{
+                      t(Config.Scope + ".type")
+                    }}</label>
+                    <select
+                      soho-dropdown
+                      name="packagings"
+                      [(ngModel)]="packaging"
+                      (change)="updatePackaging()"
+                    >
+                      <option
+                        *ngFor="let packaging of packagings"
+                        [value]="packaging.PACT"
+                      >
+                        {{ packaging!.PACT }} /
+                        {{ packaging!.PANM }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <!-- <div class="summary-form">
+                    <div class="field">
+                      <span class="label">{{
+                        t(Config.Scope + ".maxWeight")
+                      }}</span>
+                      <span class="data">{{
+                        maxWeight | number: "1.2-2"
+                      }}</span>
+                    </div>
+
+                    <div class="field">
+                      <span class="label">{{
+                        t(Config.Scope + ".maxVolume")
+                      }}</span>
+
+                      <span class="data">{{
+                        maxVolume | number: "1.2-2"
+                      }}</span>
+                    </div>
+                  </div> -->
+                </fieldset>
+              </h5-form>
+            </div>
+            <div class="three columns">
+              <fieldset>
+                <legend>{{ t(Config.Scope + ".weight") }}</legend>
+                <div class="field">
+                  <div
+                    id="targeted"
+                    soho-chart
+                    [dataSet]="weightData"
+                    [type]="'completion-target'"
+                  ></div>
+                </div>
+                <h5-form>
+                  <div class="summary-form">
+                    <div class="field padding-top-40">
+                      <span class="label">{{
+                        t(Config.Scope + ".weight")
+                      }}</span>
+
+                      <span class="data">{{
+                        currentWeight | number: "1.2-2"
+                      }}</span>
+                    </div>
+                  </div>
+                  <div class="summary-form">
+                    <div class="field padding-top-40">
+                      <span class="label">{{
+                        t(Config.Scope + ".maxWeight")
+                      }}</span>
+                      <span class="data">{{
+                        maxWeight | number: "1.2-2"
+                      }}</span>
+                    </div>
+                  </div>
+                </h5-form>
+              </fieldset>
+            </div>
+            <div class="three columns">
+              <fieldset>
+                <legend>{{ t(Config.Scope + ".volume") }}</legend>
+                <div class="field">
+                  <div
+                    id="targeted"
+                    soho-chart
+                    [dataSet]="volumeData"
+                    [type]="'completion-target'"
+                  ></div>
+                </div>
+                <h5-form>
+                  <div class="summary-form">
+                    <div class="field padding-top-40">
+                      <span class="label">{{
+                        t(Config.Scope + ".volume")
+                      }}</span>
+
+                      <span class="data">{{
+                        currentVolume | number: "1.2-2"
+                      }}</span>
+                    </div>
+                  </div>
+                  <div class="summary-form">
+                    <div class="field padding-top-40">
+                      <span class="label">{{
+                        t(Config.Scope + ".maxVolume")
+                      }}</span>
+
+                      <span class="data">{{
+                        maxVolume | number: "1.2-2"
+                      }}</span>
+                    </div>
+                  </div>
+                </h5-form>
+              </fieldset>
+            </div>
+            <div class="three columns">
+              <div class="six columns">
+                <fieldset>
+                  <legend>{{ t(Config.Scope + ".quantity") }}</legend>
+                  <h5-form>
+                    <div class="summary-form">
+                      <div class="field">
+                        <span class="data"
+                          >{{ currentUnits | number }}
+                          {{ t(Config.Scope + ".units") }}</span
+                        >
+                      </div>
+                    </div>
+                  </h5-form>
+                </fieldset>
+              </div>
+
+              <div class="six columns">
+                <fieldset>
+                  <legend>{{ t(Config.Scope + ".value") }}</legend>
+                  <h5-form>
+                    <div class="summary-form">
+                      <div class="field">
+                        <span class="data"
+                          >{{ currentValue | number: "1.2-2" }} $</span
+                        >
+                      </div>
+                    </div>
+                  </h5-form>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </h5-frame>
+  </h5-main>
+</ng-container>
+
+<div #dialogPlaceholder></div>
